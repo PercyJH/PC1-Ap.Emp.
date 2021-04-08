@@ -1,0 +1,11 @@
+<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
+<h1>{{ region.region_opcion }}</h1>
+
+<ul>
+{% for opcion in region.opcion_set.all %}
+    <li>{{ opcion.candidato }} -- {{ opcion.votos }} voto{{ opcion.votos|pluralize }}</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'encuesta:resultados' region.id%}">Votar de nuevo?</a>
+<a href="{% url 'encuesta:index' %}">Ver preguntas</a>

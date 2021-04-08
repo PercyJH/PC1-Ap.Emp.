@@ -1,0 +1,14 @@
+<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
+<h1>Encuesta</h1>
+
+{% if latest_question_list %}
+    <ul>
+    {% for region in latest_question_list %}
+        <li>
+            <a href="/encuesta/{{ region.id }}/">{{ region.region_opcion }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay resgistros.</p>
+{% endif %}

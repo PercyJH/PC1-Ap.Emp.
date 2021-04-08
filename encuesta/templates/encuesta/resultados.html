@@ -1,0 +1,15 @@
+<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
+<h1>{{ region.region_opcion }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'encuesta:votar' region.id %}" method="post">
+{% csrf_token %}
+{% for opcion in region.opcion_set.all %}
+    <input type="radio" name="opcion" id="opcion{{ forloop.counter }}" value="{{ opcion.id }}">
+    <label for="opcion{{ forloop.counter }}">{{ opcion.candidato }}</label><br>
+{% endfor %}    
+<input type="submit" value="Votar">    
+</form>
+<br/>
+<a href="{% url 'encuesta:index' %}">Ver regiones</a>
